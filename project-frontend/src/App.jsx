@@ -9,7 +9,7 @@ function App() {
         <h1 class="bg-green-300 text-3xl font-bold underline">
           Hello world!
         </h1>
-        <Button>Click me</Button>
+        <Button>Click</Button>
       </div>
     </>
   )
