@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { GraduationCap } from "lucide-react";
+import { Tabs, TabsContent, TabsList, } from "@radix-ui/react-tabs";
 
 function AuthPage(){
+    const [activeTab, setActiveTab] = useState("signin");
+
     return (
     <div className="flex flex-col min-h-screen">
       <header className="px-4 lg:px-6 h-14 flex items-center border-b">
@@ -10,6 +13,21 @@ function AuthPage(){
           <span className="font-extrabold text-xl">LMS LEARN</span>
         </Link>
       </header>
+    <div className="flex items-center justify-center min-h-screen bg-background">
+        <Tabs>
+            <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="signin">Sign In</TabsTrigger>
+            <TabsTrigger value="signup">Sign Up</TabsTrigger>
+          </TabsList>
+          <TabsContent value="signin">
+           
+          </TabsContent>
+          <TabsContent value="signup">
+           
+          </TabsContent>
+        </Tabs>
+        </div>
+
     </div>
 );
 }
