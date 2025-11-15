@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import AuthPage from "./pages/auth";
-import RouteGuard from "./components/route-guard";
+import AuthPage from "./pages/auth/index.jsx";
 import './App.css'
 import { Button } from "@/components/ui/button"
 
@@ -10,7 +9,7 @@ function App() {
       <Routes>
       <Route
         path="/auth"
-        elementelement={<AuthPage />}
+        element={<AuthPage />}
       />
       </Routes>
     </>
