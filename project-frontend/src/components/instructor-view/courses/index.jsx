@@ -10,14 +10,21 @@ import {
 } from "@/components/ui/table";
 import { Delete, Edit } from "lucide-react";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function InstructorCourses() {
+    const navigate = useNavigate();
 
   return (
     <Card>
       <CardHeader className="flex justify-between flex-row items-center">
         <CardTitle className="text-3xl font-extrabold">All Courses</CardTitle>
-        <Button className="p-6"
+        <Button onClick={() => {
+            setCourseCurriculumFormData(courseCurriculumInitialFormData);
+            navigate("/instructor/create-new-course");
+          }}
+          className="p-6"
         >
           Create New Course
         </Button>
