@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { registerService, loginService, } from "@/services";
+import { registerService, loginService, checkAuthService} from "@/services";
 import { initialSignInFormData, initialSignUpFormData } from "@/config";
 
 export const AuthContext = createContext(null);
@@ -11,7 +11,7 @@ export default function AuthProvider({ children }) {
     authenticate: false,
     user: null,
   });
-  
+
   async function handleRegisterUser(event) {
     event.preventDefault();
     const data = await registerService(signUpFormData);
@@ -38,6 +38,35 @@ export default function AuthProvider({ children }) {
       });
     }
   }
+
+  async function checkAuthUser() {
+    try {
+      const data = await checkAuthService();
+      if (data.success) {
+        setAuth({
+          authenticate: true,
+          user: data.data.user,
+        });
+        setLoading(false);
+      } else {
+        setAuth({
+          authenticate: false,
+          user: null,
+        });
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      if (!error?.response?.data?.success) {
+        setAuth({
+          authenticate: false,
+          user: null,
+        });
+        setLoading(false);
+      }
+    }
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -46,6 +75,8 @@ export default function AuthProvider({ children }) {
         signUpFormData,
         setSignUpFormData,
         handleRegisterUser,
+        handleLoginUser,
+        checkAuthUser,
       }}
     >
       { children}
