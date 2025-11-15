@@ -5,6 +5,9 @@ import RouteGuard from "./components/route-guard";
 import { useContext } from "react";
 import { AuthContext } from "./context/auth-context";
 import InstructorDashboardpage from "./pages/instructor";
+import StudentViewCommonLayout from "./components/student-view/common-layout";
+import StudentHomePage from "./pages/student/home";
+import NotFoundPage from "./pages/not-found";
 
 function App() {
   const { auth } = useContext(AuthContext);
@@ -31,6 +34,19 @@ function App() {
           />
         }
       />
+      <Route
+        path="/"
+        element={
+          <RouteGuard
+            element={<StudentViewCommonLayout />}
+            authenticated={auth?.authenticate}
+            user={auth?.user}
+          />
+        }
+      />
+      <Route path="" element={<StudentHomePage />} />
+      <Route path="home" element={<StudentHomePage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }
