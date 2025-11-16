@@ -1,3 +1,5 @@
+import InstructorCourses from "@/components/instructor-view/courses";
+import InstructorDashboard from "@/components/instructor-view/dashboard";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { AuthContext } from "@/context/auth-context";
@@ -7,19 +9,20 @@ import { BarChart, Book, LogOut } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 
 function InstructorDashboardpage() {
-    const [activeTab, setActiveTab] = useState("dashboard");
-    const { resetCredentials } = useContext(AuthContext);
-    const { instructorCoursesList, setInstructorCoursesList } = useContext(InstructorContext);
-    
-    async function fetchAllCourses() {
-      const response = await fetchInstructorCourseListService();
-      if (response?.success) setInstructorCoursesList(response?.data);
-    }
+  const [activeTab, setActiveTab] = useState("dashboard");
+  const { resetCredentials } = useContext(AuthContext);
+  const { instructorCoursesList, setInstructorCoursesList } =
+    useContext(InstructorContext);
 
-    useEffect(() => {
-      fetchAllCourses();
-    }, []);
-    
+  async function fetchAllCourses() {
+    const response = await fetchInstructorCourseListService();
+    if (response?.success) setInstructorCoursesList(response?.data);
+  }
+
+  useEffect(() => {
+    fetchAllCourses();
+  }, []);
+
   const menuItems = [
     {
       icon: BarChart,
@@ -45,6 +48,8 @@ function InstructorDashboardpage() {
     resetCredentials();
     sessionStorage.clear();
   }
+
+  console.log(instructorCoursesList, "instructorCoursesList");
 
   return (
     <div className="flex h-full min-h-screen bg-gray-100">
@@ -85,6 +90,5 @@ function InstructorDashboardpage() {
     </div>
   );
 }
-
 
 export default InstructorDashboardpage;
