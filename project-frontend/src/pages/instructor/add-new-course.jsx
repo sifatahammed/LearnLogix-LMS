@@ -5,6 +5,8 @@ import CourseCurriculum from "@/components/instructor-view/courses/add-new-cours
 import CourseLanding from "@/components/instructor-view/courses/add-new-course/course-landing";
 import CourseSettings from "@/components/instructor-view/courses/add-new-course/course-settings";
 import { InstructorContext } from "@/context/instructor-context";
+import { AuthContext } from "@/context/auth-context";
+import { useNavigate } from "react-router-dom";
 
 
 function AddNewCoursePage() {
@@ -16,6 +18,10 @@ function AddNewCoursePage() {
     currentEditedCourseId,
     setCurrentEditedCourseId,
   } = useContext(InstructorContext);
+
+  const { auth } = useContext(AuthContext);
+  const navigate = useNavigate();
+
 
   function isEmpty(value) {
     if (Array.isArray(value)) {
@@ -51,6 +57,34 @@ function AddNewCoursePage() {
     return hasFreePreview;
   }
 
+  async function handleCreateCourse() {
+    const courseFinalFormData = {
+      instructorId: auth?.user?._id,
+      instructorName: auth?.user?.userName,
+      date: new Date(),
+      ...courseLandingFormData,
+      students: [],
+      curriculum: courseCurriculumFormData,
+      isPublised: true,
+    };
+
+    const response =
+      currentEditedCourseId !== null
+        ? await updateCourseByIdService(
+            currentEditedCourseId,
+            courseFinalFormData
+          )
+        : await addNewCourseService(courseFinalFormData);
+
+    if (response?.success) {
+      setCourseLandingFormData(courseLandingInitialFormData);
+      setCourseCurriculumFormData(courseCurriculumInitialFormData);
+      navigate(-1);
+      setCurrentEditedCourseId(null);
+    }
+
+    console.log(courseFinalFormData, "courseFinalFormData");
+  }
     return (
       <div className="container mx-auto p-4">
         <div className="flex justify-between">
