@@ -20,6 +20,8 @@ function CourseCurriculum() {
     setCourseCurriculumFormData,
     mediaUploadProgress, 
     setMediaUploadProgress,
+    mediaUploadProgressPercentage,
+    setMediaUploadProgressPercentage,
   } = useContext(InstructorContext);
 
   const bulkUploadInputRef = useRef(null);
