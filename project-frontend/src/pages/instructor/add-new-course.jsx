@@ -6,7 +6,7 @@ import CourseLanding from "@/components/instructor-view/courses/add-new-course/c
 import CourseSettings from "@/components/instructor-view/courses/add-new-course/course-settings";
 import { InstructorContext } from "@/context/instructor-context";
 import { AuthContext } from "@/context/auth-context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 function AddNewCoursePage() {
@@ -21,7 +21,7 @@ function AddNewCoursePage() {
 
   const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  const params = useParams();
 
   function isEmpty(value) {
     if (Array.isArray(value)) {
@@ -85,6 +85,39 @@ function AddNewCoursePage() {
 
     console.log(courseFinalFormData, "courseFinalFormData");
   }
+
+  async function fetchCurrentCourseDetails() {
+    const response = await fetchInstructorCourseDetailsService(
+      currentEditedCourseId
+    );
+
+    if (response?.success) {
+      const setCourseFormData = Object.keys(
+        courseLandingInitialFormData
+      ).reduce((acc, key) => {
+        acc[key] = response?.data[key] || courseLandingInitialFormData[key];
+
+        return acc;
+      }, {});
+
+      console.log(setCourseFormData, response?.data, "setCourseFormData");
+      setCourseLandingFormData(setCourseFormData);
+      setCourseCurriculumFormData(response?.data?.curriculum);
+    }
+
+    console.log(response, "response");
+  }
+
+  useEffect(() => {
+    if (currentEditedCourseId !== null) fetchCurrentCourseDetails();
+  }, [currentEditedCourseId]);
+
+  useEffect(() => {
+    if (params?.courseId) setCurrentEditedCourseId(params?.courseId);
+  }, [params?.courseId]);
+
+  console.log(params, currentEditedCourseId, "params");
+
     return (
       <div className="container mx-auto p-4">
         <div className="flex justify-between">

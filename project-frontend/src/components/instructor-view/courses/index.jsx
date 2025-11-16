@@ -13,8 +13,13 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-function InstructorCourses() {
-    const navigate = useNavigate();
+function InstructorCourses(listOfCourses) {
+  const navigate = useNavigate();
+  const {
+    setCourseLandingFormData,
+    setCourseCurriculumFormData,    
+    setCurrentEditedCourseId,
+  } = useContext(InstructorContext);
 
   return (
     <Card>
@@ -45,14 +50,20 @@ function InstructorCourses() {
                 ? listOfCourses.map((course) => (
                     <TableRow>
                       <TableCell className="font-medium">
-                        React
+                        {course?.title}
                       </TableCell>
-                      <TableCell>10</TableCell>
+                      <TableCell>{course?.students?.length}</TableCell>
                       <TableCell>
-                        500
+                        ${course?.students?.length * course?.pricing}
                       </TableCell>
                       <TableCell className="text-right">
-                        <Button>
+                        <Button
+                          onClick={() => {
+                            navigate(`/instructor/edit-course/${course?._id}`);
+                          }}
+                          variant="ghost"
+                          size="sm"
+                        >
                           <Edit className="h-6 w-6" />
                         </Button>
                         <Button variant="ghost" size="sm">
