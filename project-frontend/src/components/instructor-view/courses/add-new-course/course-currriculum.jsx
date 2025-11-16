@@ -3,8 +3,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import VideoPlayer from "@/components/video-player";
 import { courseCurriculumInitialFormData } from "@/config";
 import { InstructorContext } from "@/context/instructor-context";
+import {
+  mediaBulkUploadService,
+  mediaDeleteService,
+  mediaUploadService,
+} from "@/services";
 import { Upload } from "lucide-react";
 import { useContext, useRef } from "react";
 
@@ -12,6 +18,8 @@ function CourseCurriculum() {
   const {
     courseCurriculumFormData,
     setCourseCurriculumFormData,
+    mediaUploadProgress, 
+    setMediaUploadProgress,
   } = useContext(InstructorContext);
 
   const bulkUploadInputRef = useRef(null);
@@ -35,7 +43,7 @@ function CourseCurriculum() {
     setCourseCurriculumFormData(cpyCourseCurriculumFormData);
   }
 
-    function handleFreePreviewChange(currentValue, currentIndex) {
+  function handleFreePreviewChange(currentValue, currentIndex) {
     let cpyCourseCurriculumFormData = [...courseCurriculumFormData];
     cpyCourseCurriculumFormData[currentIndex] = {
       ...cpyCourseCurriculumFormData[currentIndex],
@@ -43,6 +51,35 @@ function CourseCurriculum() {
     };
 
     setCourseCurriculumFormData(cpyCourseCurriculumFormData);
+  }
+
+  async function handleSingleLectureUpload(event, currentIndex) {
+    const selectedFile = event.target.files[0];
+
+    if (selectedFile) {
+      const videoFormData = new FormData();
+      videoFormData.append("file", selectedFile);
+
+      try {
+        setMediaUploadProgress(true);
+        const response = await mediaUploadService(
+          videoFormData,
+          setMediaUploadProgressPercentage
+        );
+        if (response.success) {
+          let cpyCourseCurriculumFormData = [...courseCurriculumFormData];
+          cpyCourseCurriculumFormData[currentIndex] = {
+            ...cpyCourseCurriculumFormData[currentIndex],
+            videoUrl: response?.data?.url,
+            public_id: response?.data?.public_id,
+          };
+          setCourseCurriculumFormData(cpyCourseCurriculumFormData);
+          setMediaUploadProgress(false);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
 
