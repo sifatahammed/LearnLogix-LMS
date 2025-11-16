@@ -114,6 +114,12 @@ function CourseCurriculum() {
         <Button onClick={handleNewLecture}>
           Add Lecture
         </Button>
+        {mediaUploadProgress ? (
+          <MediaProgressbar
+            isMediaUploading={mediaUploadProgress}
+            progress={mediaUploadProgressPercentage}
+          />
+        ) : null}
          <div className="mt-4 space-y-4">
           {courseCurriculumFormData.map((curriculumItem, index) => (
             <div className="border p-5 rounded-md">
