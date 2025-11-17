@@ -1,17 +1,19 @@
+import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
 import AuthProvider from "./context/auth-context/index.jsx";
-import { InstructorContext } from "./context/instructor-context";
+import InstructorProvider from "./context/instructor-context/index.jsx";
+import StudentProvider from "./context/student-context/index.jsx";
+import App from "./App.jsx";
+import "./index.css";
 
-
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AuthProvider>
-      <InstructorContext>
-        <App/>
-      </InstructorContext>
+      <InstructorProvider>
+        <StudentProvider>
+          <App />
+        </StudentProvider>
+      </InstructorProvider>
     </AuthProvider>
   </BrowserRouter>
-)
+);
