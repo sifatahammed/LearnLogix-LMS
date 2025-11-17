@@ -6,7 +6,16 @@ import { StudentContext } from "@/context/student-context";
 function StudentHomePage() {
     const { studentViewCoursesList, setStudentViewCoursesList } =
     useContext(StudentContext);
-    
+
+  async function fetchAllStudentViewCourses() {
+    const response = await fetchStudentViewCourseListService();
+    if (response?.success) setStudentViewCoursesList(response?.data);
+    }
+
+  useEffect(() => {
+    fetchAllStudentViewCourses();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <section className="flex flex-col lg:flex-row items-center justify-between py-8 px-4 lg:px-8">
@@ -33,7 +42,6 @@ function StudentHomePage() {
               className="justify-start"
               variant="outline"
               key={categoryItem.id}
-              onClick={() => handleNavigateToCoursesPage(categoryItem.id)}
             >
               {categoryItem.label}
             </Button>
@@ -46,7 +54,6 @@ function StudentHomePage() {
           {studentViewCoursesList && studentViewCoursesList.length > 0 ? (
             studentViewCoursesList.map((courseItem) => (
               <div
-                onClick={() => handleCourseNavigate(courseItem?._id)}
                 className="border rounded-lg overflow-hidden shadow cursor-pointer"
               >
                 <img
