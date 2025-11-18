@@ -2,10 +2,13 @@ import { courseCategories } from "@/config";
 import banner from "../../../../public/banner-img.png";
 import { Button } from "@/components/ui/button";
 import { StudentContext } from "@/context/student-context";
+import { useNavigate } from "react-router-dom";
 
 function StudentHomePage() {
     const { studentViewCoursesList, setStudentViewCoursesList } =
     useContext(StudentContext);
+
+   const navigate = useNavigate();
 
   async function fetchAllStudentViewCourses() {
     const response = await fetchStudentViewCourseListService();
