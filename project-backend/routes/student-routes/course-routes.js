@@ -1,7 +1,6 @@
 const express = require("express");
 const {
   getAllStudentViewCourses, getStudentViewCourseDetails
-
 } = require("../../controllers/student-controller/course-controller");
 const router = express.Router();
 
