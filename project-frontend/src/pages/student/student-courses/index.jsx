@@ -1,9 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { AuthContext } from "@/context/auth-context";
+import { StudentContext } from "@/context/student-context";
+import { fetchStudentBoughtCoursesService } from "@/services";
 import { Watch } from "lucide-react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function StudentCoursesPage() {
+  const { auth } = useContext(AuthContext);
+  const { studentBoughtCoursesList, setStudentBoughtCoursesList } =
+    useContext(StudentContext);
+  const navigate = useNavigate();
+
+  async function fetchStudentBoughtCourses() {
+    const response = await fetchStudentBoughtCoursesService(auth?.user?._id);
+    if (response?.success) {
+      setStudentBoughtCoursesList(response?.data);
+    }
+    console.log(response);
+  }
+  useEffect(() => {
+    fetchStudentBoughtCourses();
+  }, []);
 
   return (
     <div className="p-4">
