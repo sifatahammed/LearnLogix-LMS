@@ -14,7 +14,66 @@ import { Check, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import Confetti from "react-confetti";
 
 function StudentViewCourseProgressPage() {
- 
+  const { auth } = useContext(AuthContext);
+  const { studentCurrentCourseProgress, setStudentCurrentCourseProgress } =
+    useContext(StudentContext);
+  const [lockCourse, setLockCourse] = useState(false);
+  const [currentLecture, setCurrentLecture] = useState(null);
+  const [showCourseCompleteDialog, setShowCourseCompleteDialog] =
+    useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(true);
+  const { id } = useParams();
+
+  async function fetchCurrentCourseProgress() {
+    const response = await getCurrentCourseProgressService(auth?.user?._id, id);
+    if (response?.success) {
+      if (!response?.data?.isPurchased) {
+        setLockCourse(true);
+      } else {
+        setStudentCurrentCourseProgress({
+          courseDetails: response?.data?.courseDetails,
+          progress: response?.data?.progress,
+        });
+
+        if (response?.data?.completed) {
+          setCurrentLecture(response?.data?.courseDetails?.curriculum[0]);
+          setShowCourseCompleteDialog(true);
+          setShowConfetti(true);
+
+          return;
+        }
+
+        if (response?.data?.progress?.length === 0) {
+          setCurrentLecture(response?.data?.courseDetails?.curriculum[0]);
+        } else {
+          console.log("logging here");
+          const lastIndexOfViewedAsTrue = response?.data?.progress.reduceRight(
+            (acc, obj, index) => {
+              return acc === -1 && obj.viewed ? index : acc;
+            },
+            -1
+          );
+
+          setCurrentLecture(
+            response?.data?.courseDetails?.curriculum[
+              lastIndexOfViewedAsTrue + 1
+            ]
+          );
+        }
+      }
+    }
+  }
+
+
+  useEffect(() => {
+    fetchCurrentCourseProgress();
+  }, [id]);
+
+  useEffect(() => {
+    if (showConfetti) setTimeout(() => setShowConfetti(false), 15000);
+  }, [showConfetti]);
+
   return (
     <div className="flex flex-col h-screen bg-[#1c1d1f] text-white">
       {showConfetti && <Confetti />}
