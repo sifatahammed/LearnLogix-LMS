@@ -4,14 +4,23 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
+  DialogOverlay,
+  DialogPortal,
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import VideoPlayer from "@/components/video-player";
+import { AuthContext } from "@/context/auth-context";
+import { StudentContext } from "@/context/student-context";
+import {
+  getCurrentCourseProgressService,
+} from "@/services";
 import { Check, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { useContext, useEffect, useState } from "react";
 import Confetti from "react-confetti";
+import { useParams } from "react-router-dom";
 
 function StudentViewCourseProgressPage() {
   const { auth } = useContext(AuthContext);
