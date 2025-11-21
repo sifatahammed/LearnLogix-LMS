@@ -1,27 +1,22 @@
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogOverlay,
-  DialogPortal,
-  DialogTitle,
+  Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
+import VideoPlayer from "@/components/video-player";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import VideoPlayer from "@/components/video-player";
-import { AuthContext } from "@/context/auth-context";
-import { StudentContext } from "@/context/student-context";
 import {
   getCurrentCourseProgressService,
   markLectureAsViewedService,
+  resetCourseProgressService,
 } from "@/services";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useContext, useEffect, useState } from "react";
+import { Check, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import Confetti from "react-confetti";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "@/context/auth-context";
+import { StudentContext } from "@/context/student-context";
 
 function StudentViewCourseProgressPage() {
   const navigate = useNavigate();
@@ -90,6 +85,20 @@ function StudentViewCourseProgressPage() {
     }
   }
 
+  async function handleRewatchCourse() {
+    const response = await resetCourseProgressService(
+      auth?.user?._id,
+      studentCurrentCourseProgress?.courseDetails?._id
+    );
+
+    if (response?.success) {
+      setCurrentLecture(null);
+      setShowConfetti(false);
+      setShowCourseCompleteDialog(false);
+      fetchCurrentCourseProgress();
+    }
+  }
+
   useEffect(() => {
     fetchCurrentCourseProgress();
   }, [id]);
@@ -101,6 +110,8 @@ function StudentViewCourseProgressPage() {
   useEffect(() => {
     if (showConfetti) setTimeout(() => setShowConfetti(false), 15000);
   }, [showConfetti]);
+
+  console.log(currentLecture, "currentLecture");
 
   return (
     <div className="flex flex-col h-screen bg-[#1c1d1f] text-white">
@@ -117,7 +128,7 @@ function StudentViewCourseProgressPage() {
             Back to My Courses Page
           </Button>
           <h1 className="text-lg font-bold hidden md:block">
-            title
+            {studentCurrentCourseProgress?.courseDetails?.title}
           </h1>
         </div>
         <Button onClick={() => setIsSideBarOpen(!isSideBarOpen)}>
@@ -137,10 +148,12 @@ function StudentViewCourseProgressPage() {
           <VideoPlayer
             width="100%"
             height="500px"
-    
+            url={currentLecture?.videoUrl}
+            onProgressUpdate={setCurrentLecture}
+            progressData={currentLecture}
           />
           <div className="p-6 bg-[#1c1d1f]">
-            <h2 className="text-2xl font-bold mb-2">title</h2>
+            <h2 className="text-2xl font-bold mb-2">{currentLecture?.title}</h2>
           </div>
         </div>
         <div
@@ -166,7 +179,23 @@ function StudentViewCourseProgressPage() {
             <TabsContent value="content">
               <ScrollArea className="h-full">
                 <div className="p-4 space-y-4">
-            
+                  {studentCurrentCourseProgress?.courseDetails?.curriculum.map(
+                    (item) => (
+                      <div
+                        className="flex items-center space-x-2 text-sm text-white font-bold cursor-pointer"
+                        key={item._id}
+                      >
+                        {studentCurrentCourseProgress?.progress?.find(
+                          (progressItem) => progressItem.lectureId === item._id
+                        )?.viewed ? (
+                          <Check className="h-4 w-4 text-green-500" />
+                        ) : (
+                          <Play className="h-4 w-4 " />
+                        )}
+                        <span>{item?.title}</span>
+                      </div>
+                    )
+                  )}
                 </div>
               </ScrollArea>
             </TabsContent>
@@ -175,7 +204,7 @@ function StudentViewCourseProgressPage() {
                 <div className="p-4">
                   <h2 className="text-xl font-bold mb-4">About this course</h2>
                   <p className="text-gray-400">
-                    description
+                    {studentCurrentCourseProgress?.courseDetails?.description}
                   </p>
                 </div>
               </ScrollArea>
@@ -203,7 +232,7 @@ function StudentViewCourseProgressPage() {
                 <Button onClick={() => navigate("/student-courses")}>
                   My Courses Page
                 </Button>
-                <Button>Rewatch Course</Button>
+                <Button onClick={handleRewatchCourse}>Rewatch Course</Button>
               </div>
             </DialogDescription>
           </DialogHeader>
