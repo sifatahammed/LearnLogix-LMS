@@ -19,17 +19,16 @@ import { AuthContext } from "@/context/auth-context";
 import { StudentContext } from "@/context/student-context";
 
 function StudentViewCourseProgressPage() {
-  const navigate = useNavigate();
   const { auth } = useContext(AuthContext);
   const { studentCurrentCourseProgress, setStudentCurrentCourseProgress } =
     useContext(StudentContext);
   const [lockCourse, setLockCourse] = useState(false);
-  const [currentLecture, setCurrentLecture] = useState(null);
-  const [showCourseCompleteDialog, setShowCourseCompleteDialog] =
-    useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [isSideBarOpen, setIsSideBarOpen] = useState(true);
+  const [showCourseCompleteDialog, setShowCourseCompleteDialog] = useState(false);
+  const [currentLecture, setCurrentLecture] = useState(null);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   async function fetchCurrentCourseProgress() {
     const response = await getCurrentCourseProgressService(auth?.user?._id, id);
