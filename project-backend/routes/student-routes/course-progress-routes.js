@@ -3,7 +3,7 @@ const {
   getCurrentCourseProgress,
   markCurrentLectureAsViewed,
   resetCurrentCourseProgress,
-} = require("../../controllers/student-controller/course-progress-controller");
+} = require("../../controllers/student-controllers/course-progress-controller");
 
 const router = express.Router();
 

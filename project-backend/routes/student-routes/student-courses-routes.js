@@ -1,7 +1,7 @@
 const express = require("express");
 const {
   getCoursesByStudentId,
-} = require("../../controllers/student-controller/student-courses-controller");
+} = require("../../controllers/student-controllers/student-courses-controller");
 
 const router = express.Router();
 

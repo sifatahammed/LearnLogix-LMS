@@ -3,7 +3,7 @@ const multer = require("multer");
 const {
   uploadMediaToCloudinary,
   deleteMediaFromCloudinary,
-} = require("../../helpers/cloudinary");
+} = require("../../external-helpers/cloudinary");
 
 const router = express.Router();
 

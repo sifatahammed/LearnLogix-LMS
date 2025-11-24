@@ -1,4 +1,4 @@
-import CourseCurriculum from "@/components/instructor-view/courses/add-new-course/course-curriculum";
+import CourseCurriculum from "@/components/instructor-view/courses/add-new-course/course-curriculum.jsx";
 import CourseLanding from "@/components/instructor-view/courses/add-new-course/course-landing";
 import CourseSettings from "@/components/instructor-view/courses/add-new-course/course-settings";
 import { Button } from "@/components/ui/button";
