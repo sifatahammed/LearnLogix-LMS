@@ -20,7 +20,8 @@ function AddNewCoursePage() {
     setCourseLandingFormData,
     setCourseCurriculumFormData,
     currentEditedCourseId,
-    setCurrentEditedCourseId } = useContext(InstructorContext);
+    setCurrentEditedCourseId,
+  } = useContext(InstructorContext);
 
   const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -164,3 +165,4 @@ function AddNewCoursePage() {
 }
 
 export default AddNewCoursePage;
+

@@ -1,25 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
+  Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle,
 } from "@/components/ui/dialog";
 import { Skeleton } from "@/components/ui/skeleton";
 import VideoPlayer from "@/components/video-player";
+import { CheckCircle, Globe, Lock, PlayCircle } from "lucide-react";
+import {
+  createPaymentService, fetchStudentViewCourseDetailsService,
+} from "@/services";
+import { useContext, useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import { AuthContext } from "@/context/auth-context";
 import { StudentContext } from "@/context/student-context";
-import {
-  checkCoursePurchaseInfoService,
-  createPaymentService,
-  fetchStudentViewCourseDetailsService,
-} from "@/services";
-import { CheckCircle, Globe, Lock, PlayCircle } from "lucide-react";
-import { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 function StudentViewCourseDetailsPage() {
   const {
@@ -37,12 +30,10 @@ function StudentViewCourseDetailsPage() {
     useState(null);
   const [showFreePreviewDialog, setShowFreePreviewDialog] = useState(false);
   const [approvalUrl, setApprovalUrl] = useState("");
-  const navigate = useNavigate();
   const { id } = useParams();
   const location = useLocation();
 
   async function fetchStudentViewCourseDetails() {
-
     const response = await fetchStudentViewCourseDetailsService(
       currentCourseDetailsId
     );
