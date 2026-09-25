@@ -58,7 +58,7 @@ function StudentHomePage() {
         <div className="lg:w-1/2 lg:pr-12">
           <h1 className="text-4xl font-bold mb-4">Learning thet gets you</h1>
           <p className="text-xl">
-            Skills for your present and your future. Get Started with US
+            Skills for your present and your future. Get Started with Us
           </p>
         </div>
         <div className="lg:w-full mb-8 lg:mb-0">
@@ -86,7 +86,7 @@ function StudentHomePage() {
         </div>
       </section>
       <section className="py-12 px-4 lg:px-8">
-        <h2 className="text-2xl font-bold mb-6">Featured COourses</h2>
+        <h2 className="text-2xl font-bold mb-6">Featured Courses</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {studentViewCoursesList && studentViewCoursesList.length > 0 ? (
             studentViewCoursesList.map((courseItem) => (
