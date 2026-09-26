@@ -529,7 +529,174 @@ LearnLogix/
 ├── README.md
 └── package.json
 ```
+# 🛠️ Tech Stack
 
+## Frontend
 
+- **React** — Component-based frontend framework
+- **React Router** — Client-side routing
+- **TailwindCSS** — Utility-first styling
+- **shadcn/ui** — Reusable UI components
+- **Lucide React** — Icons
+- **Context API** — Global application state
+- **Axios** — HTTP requests
+
+## Backend
+
+- **Node.js**
+- **Express.js**
+- **REST API**
+- **JWT Authentication**
+
+## Database
+
+- **MongoDB**
+- **Mongoose**
+
+## Payment
+
+- **PayPal**
+
+## Media
+
+- Course video content
+- Course thumbnails
+- Media progress tracking
+- Video progress management
+
+---
+
+# 🔐 Authentication & Authorization
+
+LearnLogix uses authentication and role-based authorization to provide different experiences for students and instructors.
+
+## 👨‍🎓 Student
+
+Students can:
+
+- Browse courses
+- View course details
+- Purchase courses
+- Access enrolled courses
+- Watch course content
+- Track learning progress
+- Manage their courses
+
+## 👨‍🏫 Instructor
+
+Instructors can:
+
+- Access the instructor dashboard
+- Create courses
+- Edit courses
+- Delete courses
+- Manage course curriculum
+- Upload course media
+- View enrolled students
+- Monitor course revenue
+
+Protected routes prevent unauthorized users from accessing restricted functionality.
+
+---
+
+# 🚀 Getting Started
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/LearnLogix.git
+cd LearnLogix
+```
+## 2. Setup Backend
+
+Navigate to the backend directory:
+
+```bash
+cd server
+```
+Install dependencies:
+```bash
+npm install
+```
+Create a .env file:
+```bash
+PORT=4000
+
+MONGO_URI=mongodb://127.0.0.1:27017/learnlogix
+
+JWT_SECRET=your-secret-key
+
+CLIENT_URL=http://localhost:5173
+
+PAYPAL_CLIENT_ID=your-paypal-client-id
+
+PAYPAL_CLIENT_SECRET=your-paypal-client-secret
+```
+Start the backend:
+```bash
+npm run dev
+```
+## 3. Setup Frontend
+
+Open another terminal:
+```bash
+cd client
+```
+Install dependencies:
+```bash
+npm install
+```
+Start the development server:
+```bash
+npm run dev
+```
+The application will normally be available at:
+```bash
+http://localhost:5173
+```
+📦 Scripts
+Frontend
+```bash
+npm run dev
+```
+Start the Vite development server.
+```bash
+npm run build
+```
+Build the application for production.
+```bash
+npm run preview
+```     
+Preview the production build.
+
+Backend
+```bash
+npm run dev
+```
+Start the backend development server.
+```bash
+npm start
+```
+Start the backend normally.
+
+## 🔐 Environment Variables
+
+The following environment variables are required:
+```bash
+PORT=4000
+
+MONGO_URI=your-mongodb-connection-string
+
+JWT_SECRET=your-jwt-secret
+
+CLIENT_URL=http://localhost:5173
+
+PAYPAL_CLIENT_ID=your-paypal-client-id
+
+PAYPAL_CLIENT_SECRET=your-paypal-client-secret
+
+Important: Never commit your .env file or expose your secret keys publicly.
+
+```
 
 
