@@ -200,6 +200,7 @@ Course Revenue = Course Price × Number of Enrolled Students
 ##📖Course Learning Flow
 
 The complete student learning process can be represented as:
+```text
 Student
    │
    ▼
@@ -231,12 +232,14 @@ Track Progress
    │
    ▼
 Complete Course
+```
 
 ##📈 Progress Tracking
 
 Progress tracking is one of the core features of LearnLogix.
 
 When a student watches a video, the platform tracks media progress and associates it with the student's course progress.
+```text
 Video Player
       │
       ▼
@@ -253,11 +256,12 @@ Course Progress
       │
       ▼
 Student Dashboard
-
+```
 ##🛒 Enrollment & Order Processing
 
 When a student purchases a course, the system processes the order and enrollment.
 
+```text
 Student
    │
    ▼
@@ -275,6 +279,7 @@ Order Processing
                           │
                           ▼
                     Purchased Course
+```
 
 This allows LearnLogix to distinguish between:
 - Available courses
