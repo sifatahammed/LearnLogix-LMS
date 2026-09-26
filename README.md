@@ -657,7 +657,7 @@ The application will normally be available at:
 ```bash
 http://localhost:5173
 ```
-📦 Scripts
+### 📦 Scripts
 Frontend
 ```bash
 npm run dev
@@ -701,7 +701,7 @@ PAYPAL_CLIENT_SECRET=your-paypal-client-secret
 Important: Never commit your .env file or expose your secret keys publicly.
 
 ```
-# 📱 Responsive Design
+## 📱 Responsive Design
 
 LearnLogix is designed to provide a consistent and accessible experience across different screen sizes and devices.
 
@@ -716,7 +716,7 @@ TailwindCSS responsive utilities are used throughout the application to create a
 
 ---
 
-# 🎯 Project Goals
+## 🎯 Project Goals
 
 LearnLogix was developed with the following goals:
 
@@ -737,7 +737,7 @@ LearnLogix was developed with the following goals:
 
 ---
 
-# 🔮 Future Enhancements
+## 🔮 Future Enhancements
 
 Some planned improvements include:
 
