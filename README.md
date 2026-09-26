@@ -40,7 +40,7 @@
 
 # 🎓 LearnLogix — Learning Management System
 
-![LearnLogix Home](assets/learnlogix-home.png)
+![LearnLogix Home](project-frontend/src/assets/home.png)
 
 **LearnLogix** is a modern **full-stack Learning Management System (LMS)** built to provide an interactive learning platform for students and a powerful course management system for instructors.
 
@@ -56,25 +56,25 @@ LearnLogix is built using **React, TailwindCSS, shadcn/ui, Node.js, Express.js, 
 
 ## 🔐 Authentication
 
-![LearnLogix Authentication](assets/learnlogix-auth.png)
+![LearnLogix Authentication](project-frontend/src/assets/0.png)
 
 ---
 
 ## 🏠 Student Home Page
 
-![LearnLogix Student Home](assets/learnlogix-home.png)
+![LearnLogix Student Home](project-frontend/src/assets/stu.png)
 
 ---
 
 ## 👨‍🏫 Instructor Dashboard
 
-![LearnLogix Instructor Dashboard](assets/learnlogix-instructor-dashboard.png)
+![LearnLogix Instructor Dashboard](project-frontend/src/assets/2.png)
 
 ---
 
 ## 📚 Instructor Course Management
 
-![LearnLogix Instructor Courses](assets/learnlogix-instructor-courses.png)
+![LearnLogix Instructor Courses](project-frontend/src/assets/3.png)
 
 ---
 
