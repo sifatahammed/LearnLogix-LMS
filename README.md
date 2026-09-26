@@ -287,3 +287,249 @@ This allows LearnLogix to distinguish between:
 - Enrolled courses
 - Currently learning courses
 - Completed courses
+
+##🏗️ System Architecture
+
+LearnLogix follows a modular full-stack architecture that separates the student experience, instructor/course management, API services, learning progress, payment processing, and database services.
+
+#🔄 High-Level Application Flow
+```text
+                         ┌──────────────────┐
+                         │      Users       │
+                         └────────┬─────────┘
+                                  │
+                    ┌─────────────┴─────────────┐
+                    │                           │
+              👨‍🎓 Student                 👨‍🏫 Instructor
+                    │                           │
+                    └─────────────┬─────────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │  React Frontend  │
+                         └────────┬─────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │   API Routes     │
+                         │  Express / Node  │
+                         └────────┬─────────┘
+                                  │
+             ┌────────────────────┼────────────────────┐
+             │                    │                    │
+             ▼                    ▼                    ▼
+      Course Management    Student Learning     Platform Services
+             │                    │                    │
+             │                    │                    ├── Authentication
+             │                    │                    ├── Enrollment
+             │                    │                    ├── Orders
+             │                    │                    └── Payments
+             │                    │
+             └────────────────────┼────────────────────┘
+                                  │
+                                  ▼
+                            ┌───────────┐
+                            │  MongoDB  │
+                            └───────────┘
+```
+
+##🧩 Major System Components
+#👨‍🎓 Student Module
+
+The student module handles the complete learning experience.
+```text
+Student
+   │
+   ├── Authentication
+   │
+   ├── Course Discovery
+   │
+   ├── Course Details
+   │
+   ├── Course Purchase
+   │
+   ├── Purchased Courses
+   │
+   ├── Course Player
+   │
+   └── Progress Tracking
+```
+##👨‍🏫 Instructor Module
+
+The instructor module focuses on course creation and management.
+```text
+Instructor
+   │
+   ├── Instructor Dashboard
+   │
+   ├── Course Management
+   │
+   ├── Course Creation
+   │
+   ├── Course Editing
+   │
+   ├── Course Curriculum
+   │
+   ├── Media Upload
+   │
+   ├── Student Monitoring
+   │
+   └── Revenue Tracking
+```
+
+##🗄️ Database Architecture
+
+MongoDB is used as the primary database for storing platform data.
+
+The platform maintains records for the major entities of the system.
+```text
+MongoDB
+   │
+   ├── User Records
+   │
+   ├── Course Records
+   │
+   ├── Enrollment Records
+   │
+   ├── Progress Records
+   │
+   └── Order Records
+```
+
+##👤 User Records
+
+Stores user authentication and profile information.
+
+##📚 Course Records
+
+Stores course information, pricing, curriculum, and course content.
+
+##🎓 Enrollment Records
+
+Connects students with courses they have purchased or enrolled in.
+
+##📈 Progress Records
+
+Stores student learning and video progress.
+
+##🧾 Order Records
+
+Stores course purchase and payment-related information.
+
+##🔌 API Architecture
+
+The backend is organized into modular API routes.
+```text
+API Services
+│
+├── Authentication Routes
+│
+├── Course Routes
+│
+├── Instructor Routes
+│
+├── Media Routes
+│
+├── Student Routes
+│
+├── Progress Routes
+│
+├── Enrollment Routes
+│
+├── Order Routes
+│
+└── Payment Routes\
+```
+This modular structure separates different responsibilities of the application and makes the backend easier to maintain and extend.
+
+##🔄 Request Flow
+
+A typical request follows the architecture below:
+```text
+React Component
+      │
+      ▼
+Service Function
+      │
+      ▼
+API Route
+      │
+      ▼
+Controller / Business Logic
+      │
+      ▼
+MongoDB
+      │
+      ▼
+API Response
+      │
+      ▼
+React State
+      │
+      ▼
+UI Update
+```
+
+for example, when an instructor creates a course:
+```text
+Create Course Form
+        │
+        ▼
+Instructor Context
+        │
+        ▼
+Course Service
+        │
+        ▼
+Instructor API Route
+        │
+        ▼
+Course Processing
+        │
+        ▼
+MongoDB
+        │
+        ▼
+Course Created
+```
+
+##📂 Project Structure
+```text
+LearnLogix/
+│
+├── client/                         # React frontend
+│   ├── src/
+│   │   ├── components/             # Reusable UI components
+│   │   ├── config/                 # Application configuration
+│   │   ├── context/                # Auth, student & instructor state
+│   │   ├── pages/                  # Application pages
+│   │   ├── services/               # API service functions
+│   │   └── ...
+│   └── package.json
+│
+├── server/                         # Node.js / Express backend
+│   ├── controllers/                # Business logic
+│   ├── models/                     # MongoDB/Mongoose models
+│   ├── routes/                     # API routes
+│   ├── middleware/                 # Authentication & middleware
+│   ├── helpers/                    # Utility functions
+│   └── server.js
+│
+├── assets/                         # README screenshots and images
+│   ├── learnlogix-logo.png
+│   ├── learnlogix-auth.png
+│   ├── learnlogix-home.png
+│   ├── learnlogix-instructor-dashboard.png
+│   ├── learnlogix-instructor-courses.png
+│   ├── learnlogix-course-progress.png
+│   └── learnlogix-architecture.png
+│
+├── .gitignore
+├── .env                            # Environment variables
+├── README.md
+└── package.json
+```
+
+
+
+
