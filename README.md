@@ -1,11 +1,14 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=header" width="100%"/>
 
 <p align="center">
-  <img
-    src="project-frontend/src/assets/ChatGPT Image Sep 26, 2026, 04_59_54 PM.png"
-    alt="LearnLogix Logo"
-    width="300"
-  />
+  <picture>
+    <!-- Dark mode logo -->
+    <source media="(prefers-color-scheme: dark)" srcset="project-frontend/src/assets/dark.png" />
+    <!-- Light mode logo -->
+    <source media="(prefers-color-scheme: light)" srcset="project-frontend/src/assets/white.png" />
+    <!-- Fallback -->
+    <img alt="VougeNest Logo" src="assets/logo-light.png" width="300" style="margin-top:-80px; margin-bottom:0; padding:0;">
+  </picture>
 </p>
 
 <p align="center">
