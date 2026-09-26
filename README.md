@@ -196,3 +196,89 @@ Course revenue can be calculated based on:
 
 ```text
 Course Revenue = Course Price × Number of Enrolled Students
+```
+##📖Course Learning Flow
+
+The complete student learning process can be represented as:
+Student
+   │
+   ▼
+Browse Courses
+   │
+   ▼
+Select Course
+   │
+   ▼
+View Course Details
+   │
+   ▼
+Purchase Course
+   │
+   ▼
+Enrollment
+   │
+   ▼
+My Courses
+   │
+   ▼
+Course Player
+   │
+   ▼
+Watch Video
+   │
+   ▼
+Track Progress
+   │
+   ▼
+Complete Course
+
+##📈 Progress Tracking
+
+Progress tracking is one of the core features of LearnLogix.
+
+When a student watches a video, the platform tracks media progress and associates it with the student's course progress.
+Video Player
+      │
+      ▼
+Media Progress
+      │
+      ▼
+Progress Route
+      │
+      ▼
+Progress Record
+      │
+      ▼
+Course Progress
+      │
+      ▼
+Student Dashboard
+
+##🛒 Enrollment & Order Processing
+
+When a student purchases a course, the system processes the order and enrollment.
+
+Student
+   │
+   ▼
+Course Details
+   │
+   ▼
+Payment
+   │
+   ▼
+Order Processing
+   │
+   ├──────────────► Order Record
+   │
+   └──────────────► Enrollment Record
+                          │
+                          ▼
+                    Purchased Course
+
+This allows LearnLogix to distinguish between:
+- Available courses
+- Purchased courses
+- Enrolled courses
+- Currently learning courses
+- Completed courses
