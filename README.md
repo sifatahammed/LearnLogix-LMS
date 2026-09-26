@@ -761,17 +761,27 @@ Some planned improvements include:
 - 🏅 Student certificates and achievements
 
 ---
-## 🙋‍♂️ Author
-
+## 👨‍💻 Author
+<div align="center">
 MD Sifat Ahammed Akash
 
-📫 Email: sifatahammed821@gmail.com
+Full-Stack Developer | Computer Science & Engineering
+
+📧 Email: sifatahammed821@gmail.com
+
+</div>
 
 ## 📄 License
+
 <div align="center">
 
 MIT License © MD Sifat Ahammed Akash
+</div>
+<div align="center">
+⭐ If you find VougeNest useful, consider giving the repository a star!
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer" width="100%"/> </div> ```
+Built with ❤️ using React, Node.js, Express, and MongoDB.
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer" width="100%"/> </div>
 
 
