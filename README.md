@@ -149,9 +149,9 @@ LearnLogix tracks student progress throughout each course.
 
 ---
 
-# 👨‍🏫 Instructor Features
+## 👨‍🏫 Instructor Features
 
-## 📊 Instructor Dashboard
+### 📊 Instructor Dashboard
 
 Instructors have a dedicated dashboard to monitor their platform activity.
 
@@ -162,7 +162,7 @@ Instructors have a dedicated dashboard to monitor their platform activity.
 - View course sales
 - View course-specific revenue
 
-## 📚 Course Management
+### 📚 Course Management
 
 Instructors can create and manage their courses.
 
@@ -176,7 +176,7 @@ Instructors can create and manage their courses.
 - Update course content
 - Manage course structure
 
-## 👥 Student Management
+### 👥 Student Management
 
 Instructors can monitor students enrolled in their courses.
 
@@ -185,7 +185,7 @@ Instructors can monitor students enrolled in their courses.
 - View students associated with courses
 - Monitor course enrollment
 
-## 💰 Revenue Tracking
+### 💰 Revenue Tracking
 
 Instructors can monitor revenue generated from their courses.
 
