@@ -80,7 +80,7 @@ LearnLogix is built using **React, TailwindCSS, shadcn/ui, Node.js, Express.js, 
 
 ## 🎥 Course Learning & Progress
 
-![LearnLogix Course Progress](assets/learnlogix-course-progress.png)
+![LearnLogix Course Progress](project-frontend/src/assets/pro.png)
 
 ---
 
