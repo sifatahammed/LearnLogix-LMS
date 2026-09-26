@@ -2,7 +2,7 @@
 
 <p align="center">
   <img
-    src="project-frontend/src/assets/ChatGPT_Image_Sep_26__2026__04_59_54_PM.png"
+    src="project-frontend/src/assets/ChatGPT Image Sep 26, 2026, 04_59_54 PM.png"
     alt="LearnLogix Logo"
     width="300"
   />
