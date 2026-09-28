@@ -778,7 +778,6 @@ Some planned improvements include:
   </a>
 </p>
 
----
 
 ## 📄 License
 
