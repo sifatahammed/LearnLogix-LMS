@@ -38,7 +38,7 @@
   </a>
 </p>
 
-<h1 align="center"> 🎓 LearnLogix — Learning Management System</h1>
+<h1 align="center"> 🎓 LearnLogix — LMS</h1>
 
 ![LearnLogix Home](project-frontend/src/assets/home.png)
 
