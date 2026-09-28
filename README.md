@@ -762,13 +762,23 @@ Some planned improvements include:
 
 ---
 ## 👨‍💻 Author
-<div align="center">
-MD Sifat Ahammed Akash
 
-Full-Stack Developer | Computer Science & Engineering <br>
-📧 Email: sifatahammed821@gmail.com
+<p align="center">
+  <strong>MD Sifat Ahammed Akash</strong>
+</p>
+<p align="center">
+  Full-Stack Developer • React Developer • AI/ML Enthusiast
+</p>
+<p align="center">
+  <a href="mailto:sifatahammed821@gmail.com">
+    <img src="https://img.shields.io/badge/Email-sifatahammed821%40gmail.com-red?logo=gmail&logoColor=white" alt="Email" />
+  </a>
+  <a href="https://github.com/sifatahammed">
+    <img src="https://img.shields.io/badge/GitHub-sifatahammed-black?logo=github" alt="GitHub" />
+  </a>
+</p>
 
-</div>
+---
 
 ## 📄 License
 
