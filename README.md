@@ -765,8 +765,7 @@ Some planned improvements include:
 <div align="center">
 MD Sifat Ahammed Akash
 
-Full-Stack Developer | Computer Science & Engineering
-
+Full-Stack Developer | Computer Science & Engineering <br>
 📧 Email: sifatahammed821@gmail.com
 
 </div>
