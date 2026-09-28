@@ -787,7 +787,7 @@ Some planned improvements include:
 MIT License © MD Sifat Ahammed Akash
 </div>
 <div align="center">
-⭐ If you find VougeNest useful, consider giving the repository a star!
+⭐ If you find LearnLogix useful, consider giving the repository a star!
 
 Built with ❤️ using React, Node.js, Express, and MongoDB.
 
